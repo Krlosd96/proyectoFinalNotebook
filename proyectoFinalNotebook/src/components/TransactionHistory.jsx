@@ -1,0 +1,69 @@
+import '../styles/MainContent.css'
+import { useState } from 'react'
+
+export default function TransactionHistory({transacciones}){
+    const [pagina, setPagina] = useState(1)
+    const [filter, setFilter] = useState('todos')
+
+    const handleFilterChange = (e) => {
+        setFilter(e.target.value)
+        setPagina(1) // Reset to first page when filter changes
+    }
+
+    const filteredTransacciones= filter === 'todos' ? transacciones : transacciones.filter(tx => tx.tipo === filter)
+
+    const showPagina = () => {
+        let limite=10
+        let inicio=(pagina-1)*limite
+        let fin=inicio+limite
+        return filteredTransacciones.slice(inicio, fin)
+    }
+
+    return(
+        <div className="balance-card">
+                <div className="button-container">
+                <button 
+                onClick={handleFilterChange} 
+                disabled={filter === 'todos'} 
+                value="todos"
+                className="button"
+                >Todos</button>
+                <button 
+                onClick={handleFilterChange} 
+                disabled={filter === 'ingreso'} 
+                value="ingreso"
+                className="button"
+                >Ingresos</button>
+                <button 
+                onClick={handleFilterChange} 
+                disabled={filter === 'egreso'} 
+                value="egreso"
+                className="button"
+                >Egresos</button> 
+            </div>
+                <h3 className="section-subtitle">Historial de Transacciones</h3>
+                <ul>
+                    {showPagina().map((tx) => (
+                        <li key={tx.id} className="historial-item">
+                            {tx.fecha} - {tx.tipo === 'ingreso' ? '+' : '-'}${tx.monto} - {tx.tipo.toUpperCase()}
+                        </li>
+                    ))}
+                </ul>
+                <div className="button-container">
+                <button 
+                className="button"
+                onClick={() => setPagina(prev => Math.max(prev - 1, 1))}
+                disabled={pagina === 1}
+                >Anterior
+                </button>
+                <p>Página {pagina}</p>
+                <button 
+                className="button"
+                onClick={() => setPagina(prev => prev + 1)}
+                disabled={pagina * 10 >= filteredTransacciones.length}
+                >Siguiente
+                </button>
+            </div>   
+            </div>
+    )
+}

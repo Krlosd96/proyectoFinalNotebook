@@ -1,0 +1,38 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+:root{
+    --bg-sidebar: #332b8e;
+    --bg-main-content: #fbfccd;
+    --text-color-main: #46464c;
+    --text-color-sidebar: whitesmoke;
+    --sidebar-width: 250px;
+    --color-accent: #6c63ff;
+    --main-content-padding: 2rem;
+    --separator-color: rgba(62, 62, 62, 0.827);
+    --bg-individual-item: #accbfa;
+    /* Color Principal: Azul Sólido (Profesional, no marino) */
+    --primary-blue: #34495e; 
+    
+    /* Color Secundario: Amarillo Crema (Suave para balancear) */
+    --secondary-cream: #fdf5e6; 
+    
+    /* Colores de Integración y Fondo */
+    --bg-main: #f4f7f6;      /* Fondo grisáceo muy tenue */
+    --sidebar-bg: #2c3e50;   /* Un azul más oscuro para profundidad */
+    --text-main: #2c3e50;
+    --text-light: #7f8c8d;
+    --bg-usercard: #1a2a44;
+    --text-usercard: #f5f5dc;
+    
+    /* Colores Semánticos (Esenciales para finanzas) */
+    --income-color: #27ae60; /* Verde para ingresos */
+    --expense-color: #e74c3c; /* Rojo para egresos */
+    --accent-gold: #f1c40f;   /* Un amarillo más vivo para detalles */    
+}
+
+.layout-distribution{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    
+}

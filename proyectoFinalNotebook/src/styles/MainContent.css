@@ -1,0 +1,91 @@
+.main-content-area {
+    flex: 1;
+    background-color: var(--bg-main);
+    color: var(--text-color-main);
+    padding: var(--main-content-padding);
+    align-items: center;
+    
+}
+
+.title-specs{
+    color:var(--text-main);
+    text-align: center;
+}
+
+.button {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: center;
+    box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.1);
+    border: none ;
+    transition: all 0.3s ease; /* Hace que el cambio de color sea fluido */
+    gap:1.5rem;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+    margin:4px
+}
+
+.button:hover{
+    opacity: 0.8;
+    background-color: var(--accent-gold);
+    color: var(--primary-blue)
+}
+
+    
+.historial-item{
+    border-bottom: 1px solid var(--separator-color);
+    list-style-type: none;
+}
+
+.balance-card {
+    background-color: var(--secondary-cream);
+    border-left: 5px solid var(--primary-blue); /* "Detalle" de integración */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Sombra suave (mencionada antes) */
+    margin-bottom: 20px;
+}
+/* El saldo: lo más importante visualmente */
+.balance-amount {
+    display: block;            /* Salto de línea para que resalte abajo */
+    font-size: 2.5rem;         /* Mucho más grande */
+    color: var(--primary-blue);/* Tu azul sólido profesional */
+    font-weight: 700;          /* Negrita para autoridad */
+    letter-spacing: -1px;      /* Un detalle "pro" de diseño */
+}
+
+.negative-amount {
+    display: block;            /* Salto de línea para que resalte abajo */
+    font-size: 2.5rem;         /* Mucho más grande */
+    color: var(--expense-color);/* Tu azul sólido profesional */
+    font-weight: 700;          /* Negrita para autoridad */
+    letter-spacing: -1px;      /* Un detalle "pro" de diseño */
+}
+
+/* Subtítulos de sección */
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    text-transform: uppercase; /* Para diferenciarlo del saldo */
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--secondary-cream); /* Integración con tu amarillo */
+    padding: 5px;
+}
+
+.login-card {
+    background-color: var(--secondary-cream);
+    border-left: 5px solid var(--primary-blue); /* "Detalle" de integración */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Sombra suave (mencionada antes) */
+    margin-bottom: 20px;
+    gap: 5px;
+}
