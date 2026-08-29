@@ -1,9 +1,10 @@
 import StatCard from "./StatCard";
+import { useState } from "react";
 
 export default function Overview({ transacciones, user }) {
 
   const months=["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-
+  const [mesSeleccionado, setMesSeleccionado] = useState(months[new Date().getMonth()]);
   const agruparPorMes = (transacciones) => {
     return transacciones.reduce((acc, tx) => {
       const mes = months[parseInt(tx.fecha.split("/")[1]) - 1]; // Assuming the date format is DD/MM/YYYY
@@ -17,24 +18,24 @@ export default function Overview({ transacciones, user }) {
     }, {});
   };
 
-const calcularIngresos = () => {
-    return transacciones
-      .filter((tx) => tx.tipo === "ingreso")
-      .reduce((acc, tx) => acc + tx.monto, 0);
-  }
-
-const calcularEgresos = () => {
-    return transacciones
-      .filter((tx) => tx.tipo === "egreso")
-      .reduce((acc, tx) => acc + tx.monto, 0);
-  }
+  const datosMensuales = agruparPorMes(transacciones);
 
   return (
     <div>
       <h1>¡Hola de nuevo, {user}!</h1>
       <div>
-        <StatCard title="Ingresos" value={calcularIngresos()} icon="➕" />
-        <StatCard title="Egresos" value={calcularEgresos()} icon="➖" />
+        <label htmlFor="mes">Selecciona un mes: </label>
+        <select id="mes" value={mesSeleccionado} onChange={(e) => setMesSeleccionado(e.target.value)}>
+          {months.map((mes) => (
+            <option key={mes} value={mes}>
+              {mes}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <StatCard title="Ingresos" value={datosMensuales[mesSeleccionado]?.ingresos || 0} icon="➕" />
+        <StatCard title="Egresos" value={datosMensuales[mesSeleccionado]?.egresos || 0} icon="➖" />
       </div>
     </div>
   );
