@@ -22,7 +22,7 @@ export default function Overview({ transacciones, user }) {
 
   return (
     <div>
-      <h1>¡Hola de nuevo, {user}!</h1>
+      <h1>Mes a mes</h1>
       <div>
         <label htmlFor="mes">Selecciona un mes: </label>
         <select id="mes" value={mesSeleccionado} onChange={(e) => setMesSeleccionado(e.target.value)}>
@@ -33,7 +33,7 @@ export default function Overview({ transacciones, user }) {
           ))}
         </select>
       </div>
-      <div>
+      <div className="stat-card-container">
         <StatCard title="Ingresos" value={datosMensuales[mesSeleccionado]?.ingresos || 0} icon="➕" />
         <StatCard title="Egresos" value={datosMensuales[mesSeleccionado]?.egresos || 0} icon="➖" />
       </div>

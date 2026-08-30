@@ -89,3 +89,22 @@
     margin-bottom: 20px;
     gap: 5px;
 }
+
+.stat-card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background-color: var(--secondary-cream);
+    border-left: 5px solid var(--primary-blue); /* "Detalle" de integración */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Sombra suave (mencionada antes) */
+    margin-bottom: 20px;
+    width: 50%;
+    text-align: center;
+    min-height: 200px; /* Asegura que la tarjeta tenga una altura mínima */
+    font-size: 1.25rem; /* Tamaño de fuente más grande para mejor legibilidad */
+}
