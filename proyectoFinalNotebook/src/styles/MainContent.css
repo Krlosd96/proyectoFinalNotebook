@@ -81,19 +81,25 @@
 }
 
 .login-card {
+    display: flex;
+    flex-direction: column;
     background-color: var(--secondary-cream);
     border-left: 5px solid var(--primary-blue); /* "Detalle" de integración */
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Sombra suave (mencionada antes) */
-    margin-bottom: 20px;
     gap: 5px;
+    max-width: 400px; /* Limita el ancho para que no se vea demasiado grande */
+    margin: 0 auto; /* Centra la tarjeta horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    align-self: center; /* Centra el contenido horizontalmente */
 }
 
 .stat-card-container {
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
+    justify-content: center;
 }
 
 .stat-card {

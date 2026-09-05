@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Layout from './components/Layout'
 import './styles/Layout.css'
-import Login from './components/Login'
+import LandingPage from './components/LadingPage'
 
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
   }])
   const [activeTab,setActiveTab]=useState("overview")
 
+  
   const handleLogin=(name,pass)=>{
     const userExists=userList.find(user=>user.username===name && user.password===pass)
     if(!userExists){
@@ -26,15 +27,12 @@ function App() {
   return (
     <div className="App">
       <main>
-          <div className="balance-card title-specs">
-          <h1>WealthWise Dashboard</h1>
-          <p>Welcome to your financial dashboard!</p>
-          </div>
+         
           
         </main>
       
       { !user?(
-      <Login onLogin={handleLogin}/>
+      <LandingPage onLogin={handleLogin} />
     ):(
       <Layout user={user} activeTab={activeTab} setActiveTab={setActiveTab}>
       </Layout>)}

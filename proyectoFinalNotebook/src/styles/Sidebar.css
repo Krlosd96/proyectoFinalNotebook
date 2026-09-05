@@ -49,7 +49,7 @@
 
 .sidebar-item {
     list-style: none;
-    align-items: center;
+    /*align-items: center;*/
     padding: 10px 15px;
     border-radius: 8px;
     margin-bottom: 10px;

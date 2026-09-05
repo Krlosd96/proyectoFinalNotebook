@@ -1,0 +1,30 @@
+.landing-distribution{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    
+}
+
+.landing-main-area {
+    flex: 1;
+    background-color: var(--bg-main);
+    color: var(--text-color-main);
+    padding: var(--main-content-padding);
+    align-items: center;
+    
+}
+
+.landing-sidebar-area {
+    width: 250px;
+    align-items: center;
+    background-color: var(--sidebar-bg);
+    color: var(--text-color-sidebar);
+    border-right: 3px solid var(--separator-color);
+    position: relative;
+    z-index: 10;
+    box-shadow: 4px 0px 5px rgba(0, 0, 0, 0.403);
+    text-align: center;
+    border-radius: 0px 10px 10px 0px;     
+    padding: var(--main-content-padding);
+    gap: 1.5rem;
+}

@@ -23,7 +23,7 @@ export default function Login({onLogin}){
     }
 
     return(
-        <div className="login-card">
+        <form className="login-card" onSubmit={handleSubmit}>
             <div>
             <input 
             type="text"
@@ -47,7 +47,7 @@ export default function Login({onLogin}){
             />
             </div>
             <button className="button"
-            onClick={handleSubmit}>Login</button>
-        </div>
+            type="submit">Login</button>
+        </form>
     )
 }
