@@ -15,18 +15,12 @@ export default function Login({onLogin}){
         onLogin(inputName, inputPass)
     }
 
-    const handleWrite=(e)=>{
-        setInputName(e.target.value)
-    }
-    const handlePass=(e)=>{
-        setInputPass(e.target.value)
-    }
-
     return(
         <form className="login-card" onSubmit={handleSubmit}>
             <div>
             <input 
             type="text"
+            name="username"
             value={inputName}
             onChange={(e)=>{
                 setInputName(e.target.value);
@@ -46,7 +40,8 @@ export default function Login({onLogin}){
             placeholder="Contraseña"
             />
             </div>
-            <button className="button"
+            <button 
+            className="button"
             type="submit">Login</button>
         </form>
     )

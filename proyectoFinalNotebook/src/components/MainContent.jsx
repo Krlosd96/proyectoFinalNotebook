@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import TransactionHistory from './TransactionHistory'
 import Overview from './Overview'
 
-export default function MainContent({children, user, activeTab}) {
+export default function MainContent({children, user, activeTab, onLogout}) {
     
     const [transacciones,setTransacciones] = useState(()=> {
         const transaccionesGuardadas = localStorage.getItem("transacciones")
@@ -29,7 +29,6 @@ export default function MainContent({children, user, activeTab}) {
 
         setTransacciones([nuevaTransaccion, ...transacciones])
     }
-console.log(transacciones.map(tx => new Date(tx.fecha)))
     useEffect(() => {
         localStorage.setItem("transacciones", JSON.stringify(transacciones))
     }, [transacciones])
@@ -37,19 +36,14 @@ console.log(transacciones.map(tx => new Date(tx.fecha)))
     const renderActiveTab=()=>{switch(activeTab){
           case 1:
             return <Overview transacciones={transacciones} user={user}/>
-            break;
           case 2:
             return <TransactionHistory transacciones={transacciones} />
-            break;
           case 3:
             return <div>Budgets</div>
-            break;
           case 4:
             return <div>Reports</div>
-            break;
           case 5:
             return <div>Settings</div>
-            break;
           default:
             return <Overview transacciones={transacciones} user={user}/>
         }}
