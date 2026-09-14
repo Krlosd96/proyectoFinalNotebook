@@ -2,6 +2,7 @@ import '../styles/MainContent.css'
 import { useState, useEffect } from 'react'
 import TransactionHistory from './TransactionHistory'
 import Overview from './Overview'
+import AddTransaction from './AddTransaction'
 
 export default function MainContent({children, user, activeTab, onLogout}) {
     
@@ -19,11 +20,13 @@ export default function MainContent({children, user, activeTab, onLogout}) {
             return tx.tipo === 'ingreso' ? acc + tx.monto : acc - tx.monto
         }, 0)
     }
-    const agregarTransaccion = (monto, tipo) => {
+    const agregarTransaccion = (monto, tipo, concepto, categoria) => {
         const nuevaTransaccion = {
             id: Date.now(),
             monto: monto,
             tipo: tipo,
+            concepto: concepto,
+            categoria: categoria,
             fecha: new Date().toLocaleString()
         }
 
@@ -55,19 +58,7 @@ export default function MainContent({children, user, activeTab, onLogout}) {
             <h2>
                 Mi saldo:<span className={saldo()<0?"negative-amount":"balance-amount"}> {saldo()}</span>
             </h2>
-            <div className="button-container">
-            <button 
-            className="button" 
-            onClick={() => agregarTransaccion(100, 'ingreso')}>
-                Agregar $100
-            </button>
-            <button 
-            className="button" 
-            onClick={() => agregarTransaccion(50, 'egreso')}
-            disabled={saldo() < 50}>
-                Retirar $50
-            </button>
-            </div>
+            <AddTransaction onAddTransaction={agregarTransaccion}/>
             </div>
             <div>{renderActiveTab()}</div>
         </main>

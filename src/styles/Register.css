@@ -1,0 +1,56 @@
+.register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 5px solid var(--primary-blue);
+    border-radius: 10px;
+    
+    background-color: var(--secondary-cream);
+    gap: 2rem;
+    box-shadow: 0 10px 6px rgba(0,0,0,0.05); 
+}
+
+.title-register {
+    font-size: 25px;
+    color: var(--text-color-main);
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center; 
+    margin-bottom: 1.5rem;
+}
+
+.register-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--separator-color);
+    font-size: 16px;
+}
+
+.register-button {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: center;
+    box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.1);
+    border: none ;
+    transition: all 0.3s ease; /* Hace que el cambio de color sea fluido */
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.register-button:hover{
+    opacity: 0.8;
+    background-color: var(--accent-gold);
+    color: var(--primary-blue)
+}
+
+.success-message {
+    color: var(--income-color);
+    font-size: 24px;
+    margin-top: 1rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
