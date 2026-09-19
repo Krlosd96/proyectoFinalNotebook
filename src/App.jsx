@@ -30,11 +30,12 @@ function App() {
       id: Date.now(),
       username: username,
       email: email,
-      password: password
+      password: password,
+      transactions: [],
+      
     }
     setUserList([... userList,newUser])
   }
-  console.log(userList)
   
   const handleLogin=(username,password)=>{
     const userExist=userList.find(user=>String(user.username).toLocaleLowerCase() === String(username).toLocaleLowerCase() && user.password===password)
@@ -44,6 +45,21 @@ function App() {
     }
     setUser(username)
     setPassword(password)
+  }
+  
+    const handleNewTransaction=(nuevaTransaccion)=>{
+    const updatedUserList=userList.map(u=>{
+      if(u.username===user){
+        
+        return {
+          ...u,
+          transactions: [...u.transactions, nuevaTransaccion]
+          
+        }
+      }
+      return u
+    })
+    setUserList(updatedUserList)  
   }
 
   const handleLogout=()=>{
@@ -55,6 +71,8 @@ function App() {
   useEffect(()=>{
     localStorage.setItem("userList",JSON.stringify(userList))
   },[userList])
+
+  const activeUser=userList.find(u=>u.username===user && u.password===password)
 
   return (
     <div className="App">
@@ -71,7 +89,11 @@ function App() {
       user={user} 
       activeTab={activeTab} 
       setActiveTab={setActiveTab} 
-      onLogout={handleLogout}>
+      onLogout={handleLogout}
+      onAddTransaction={handleNewTransaction}
+      activeUser={activeUser}
+      >
+      
       </Layout>)}
     </div>
   )

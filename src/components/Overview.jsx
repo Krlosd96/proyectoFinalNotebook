@@ -2,11 +2,12 @@ import StatCard from "./StatCard";
 import { useState } from "react";
 
 export default function Overview({ transacciones, user }) {
-
+  console.log("Transacciones en Overview:", transacciones);
   const months=["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   const [mesSeleccionado, setMesSeleccionado] = useState(months[new Date().getMonth()]);
   const agruparPorMes = (transacciones) => {
     return transacciones.reduce((acc, tx) => {
+      if (!tx.fecha) return acc; // Skip transactions without a date
       const mes = months[parseInt(tx.fecha.split("/")[1]) - 1]; // Assuming the date format is DD/MM/YYYY
       acc[mes] = acc[mes] || { ingresos: 0, egresos: 0 };
       if (tx.tipo === "ingreso") {

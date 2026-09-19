@@ -3,26 +3,36 @@ import '../styles/AddTransaction.css'
 
 export default function AddTransaction({onAddTransaction}) {
     const [monto, setMonto] = useState('');
-    const [tipo, setTipo] = useState('ingreso');
+    const [tipo, setTipo] = useState('');
     const [concepto, setConcepto] = useState('');
     const [categoria, setCategoria] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onAddTransaction({ monto: parseFloat(monto), tipo, concepto, categoria });
+        const nuevaTransaccion = {
+            monto: parseFloat(monto),
+            tipo,
+            concepto,
+            categoria,
+            fecha: new Date().toLocaleDateString(),
+            id: Date.now()
+        };
+        onAddTransaction(nuevaTransaccion);
         setMonto('');
-        setTipo('ingreso');
+        setTipo('');
         setConcepto('');
         setCategoria('');
     };
 
     return(
-        <div className="add-transaction">
+        <div className="add-transaction-form">
             <h2>Agregar Transacción</h2>
             <form onSubmit={handleSubmit}>
             <div>
                 <label>Monto:</label>
                 <input
+                    name="monto"
+                    min="1"
                     type="number"
                     value={monto}
                     onChange={(e) => setMonto(e.target.value)}
@@ -30,7 +40,12 @@ export default function AddTransaction({onAddTransaction}) {
             </div>
             <div>
                 <label>Tipo:</label>
-                <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
+                <select 
+                required 
+                value={tipo} 
+                onChange={(e) => setTipo(e.target.value)}
+                name="tipo">
+                    <option value="">Seleccionar tipo</option>
                     <option value="ingreso">Ingreso</option>
                     <option value="egreso">Egreso</option>
                 </select>
@@ -41,11 +56,16 @@ export default function AddTransaction({onAddTransaction}) {
                     type="text"
                     value={concepto}
                     onChange={(e) => setConcepto(e.target.value)}
+                    name="concepto"
                 />
             </div>
             <div>
                 <label>Categoría:</label>
-                <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
+                <select 
+                value={categoria} 
+                onChange={(e) => setCategoria(e.target.value)} 
+                name="categoria">
+
                     <option value="">Seleccionar categoría</option>
                     <option value="alimentacion">Alimentación</option>
                     <option value="transporte">Transporte</option>

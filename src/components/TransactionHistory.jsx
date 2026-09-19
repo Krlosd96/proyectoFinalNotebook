@@ -43,11 +43,15 @@ export default function TransactionHistory({transacciones}){
             </div>
                 <h3 className="section-subtitle">Historial de Transacciones</h3>
                 <ul>
-                    {showPagina().map((tx) => (
-                        <li key={tx.id} className="historial-item">
-                            {tx.fecha} - {tx.tipo === 'ingreso' ? '+' : '-'}${tx.monto} - {tx.tipo.toUpperCase()}
-                        </li>
-                    ))}
+                    { transacciones && filteredTransacciones.length > 0 ? (
+                        showPagina().map((tx) => (
+                            <li key={tx.id} className="historial-item">
+                                {tx.fecha} - {tx.tipo === 'ingreso' ? '+' : '-'}${tx.monto} - {tx.tipo.toUpperCase()}
+                            </li>
+                        ))
+                    ) : (
+                        <p>No hay transacciones para mostrar.</p>
+                    )}
                 </ul>
                 <div className="button-container">
                 <button 
@@ -60,7 +64,7 @@ export default function TransactionHistory({transacciones}){
                 <button 
                 className="button"
                 onClick={() => setPagina(prev => prev + 1)}
-                disabled={pagina * 10 >= filteredTransacciones.length}
+                disabled={transacciones === null || pagina * 10 >= filteredTransacciones.length}
                 >Siguiente
                 </button>
             </div>   
