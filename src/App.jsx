@@ -18,6 +18,7 @@ function App() {
     }
   }
 )
+
   const [activeTab,setActiveTab]=useState("overview")
 
   const handleRegister=({username,email,password})=>{
@@ -62,6 +63,20 @@ function App() {
     setUserList(updatedUserList)  
   }
 
+  const onDeleteTransaction=(id)=>{
+    setUserList(prevUserList=>{
+      return prevUserList.map(u=>{
+        if(u.username===user){
+          return {
+            ...u,
+            transactions: u.transactions.filter(tx=>tx.id!==id)
+          }
+        }
+        return u
+      })
+    })
+  }
+
   const handleLogout=()=>{
     setUser(null)
     setPassword(null)
@@ -92,6 +107,7 @@ function App() {
       onLogout={handleLogout}
       onAddTransaction={handleNewTransaction}
       activeUser={activeUser}
+      onDeleteTransaction={onDeleteTransaction}
       >
       
       </Layout>)}

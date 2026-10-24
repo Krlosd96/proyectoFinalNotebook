@@ -1,7 +1,7 @@
 import '../styles/MainContent.css'
 import { useState } from 'react'
 
-export default function TransactionHistory({transacciones}){
+export default function TransactionHistory({transacciones, onDeleteTransaction}) {
     const [pagina, setPagina] = useState(1)
     const [filter, setFilter] = useState('todos')
 
@@ -17,6 +17,15 @@ export default function TransactionHistory({transacciones}){
         let inicio=(pagina-1)*limite
         let fin=inicio+limite
         return filteredTransacciones.slice(inicio, fin)
+    }
+
+    const handleDelete = (e) => {
+        
+        console.log("Transacción a eliminar:", e.target.value);
+        if (window.confirm("¿Estás seguro de que deseas eliminar esta transacción?")) {
+            onDeleteTransaction(Number(e.target.value)) ;
+        }
+        
     }
 
     return(
@@ -47,6 +56,9 @@ export default function TransactionHistory({transacciones}){
                         showPagina().map((tx) => (
                             <li key={tx.id} className="historial-item">
                                 {tx.fecha} - {tx.tipo === 'ingreso' ? '+' : '-'}${tx.monto} - {tx.tipo.toUpperCase()}
+                                <button value={tx.id} onClick={handleDelete}>
+                                    ❌ 
+                                </button>
                             </li>
                         ))
                     ) : (

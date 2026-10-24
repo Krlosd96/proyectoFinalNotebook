@@ -4,7 +4,7 @@ import TransactionHistory from './TransactionHistory'
 import Overview from './Overview'
 import AddTransaction from './AddTransaction'
 
-export default function MainContent({children, user, activeTab, onAddTransaction, activeUser}) {
+export default function MainContent({children, user, activeTab, onAddTransaction, activeUser, onDeleteTransaction}) {
     const [transacciones,setTransacciones] = useState(null)
 
     useEffect(()=>{
@@ -24,7 +24,7 @@ export default function MainContent({children, user, activeTab, onAddTransaction
           case 1:
             return <Overview transacciones={transacciones} user={user}/>
           case 2:
-            return <TransactionHistory transacciones={transacciones} />
+            return <TransactionHistory transacciones={transacciones} onDeleteTransaction={onDeleteTransaction} />
           case 3:
             return <div>Budgets</div>
           case 4:

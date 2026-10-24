@@ -7,6 +7,7 @@ export default function AddTransaction({onAddTransaction}) {
     const [concepto, setConcepto] = useState('');
     const [categoria, setCategoria] = useState('');
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const nuevaTransaccion = {
