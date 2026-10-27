@@ -1,4 +1,5 @@
 import '../styles/mainContent.css'
+import { formatCurrency } from '../App'
 
 export default function StatCard({ title, value, icon }) {
 
@@ -7,7 +8,7 @@ export default function StatCard({ title, value, icon }) {
       <div className="stat-card-icon">{icon}</div>
       <div className="stat-card-content">
         <h3>{title}</h3>
-        <p>{value}</p>
+        <p>{formatCurrency(value)}</p>
       </div>
     </div>
   );

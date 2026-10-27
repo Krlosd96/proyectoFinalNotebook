@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import TransactionHistory from './TransactionHistory'
 import Overview from './Overview'
 import AddTransaction from './AddTransaction'
+import { formatCurrency } from '../App'
 
 export default function MainContent({children, user, activeTab, onAddTransaction, activeUser, onDeleteTransaction}) {
     const [transacciones,setTransacciones] = useState(null)
@@ -40,7 +41,7 @@ export default function MainContent({children, user, activeTab, onAddTransaction
             {children}
             <div className="balance-card">
             <h2>
-                Mi saldo:<span className={saldo()<0?"negative-amount":"balance-amount"}> {saldo()}</span>
+                Mi saldo:<span className={saldo()<0?"negative-amount":"balance-amount"}> {formatCurrency(saldo())}</span>
             </h2>
             <AddTransaction onAddTransaction={onAddTransaction}/>
             </div>

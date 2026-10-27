@@ -2,14 +2,25 @@ import {useState} from 'react';
 import '../styles/AddTransaction.css'
 
 export default function AddTransaction({onAddTransaction}) {
-    const [monto, setMonto] = useState('');
+    const [monto, setMonto] = useState(0);
     const [tipo, setTipo] = useState('');
     const [concepto, setConcepto] = useState('');
     const [categoria, setCategoria] = useState('');
 
+console.log("Monto ingresado:", monto);
 
+const validador=(value)=>{
+    if (value.trim() === "") {
+        return alert("El monto no puede estar vacío");
+    }}
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+    if (monto.trim()=== "") return alert("El monto no puede estar vacío");
+    if (isNaN(monto) || parseFloat(monto) <= 0) return alert("El monto debe ser un número positivo");
+    if (!tipo) return alert("Debe seleccionar un tipo de transacción");
+    if (!concepto.trim()) return alert("El concepto no puede estar vacío");
+    if (!categoria) return alert("Debe seleccionar una categoría");
         const nuevaTransaccion = {
             monto: parseFloat(monto),
             tipo,
@@ -19,7 +30,7 @@ export default function AddTransaction({onAddTransaction}) {
             id: Date.now()
         };
         onAddTransaction(nuevaTransaccion);
-        setMonto('');
+        setMonto(0);
         setTipo('');
         setConcepto('');
         setCategoria('');
@@ -32,6 +43,7 @@ export default function AddTransaction({onAddTransaction}) {
             <div>
                 <label>Monto:</label>
                 <input
+                    required={monto>0}
                     name="monto"
                     min="1"
                     type="number"
@@ -42,7 +54,7 @@ export default function AddTransaction({onAddTransaction}) {
             <div>
                 <label>Tipo:</label>
                 <select 
-                required 
+                required
                 value={tipo} 
                 onChange={(e) => setTipo(e.target.value)}
                 name="tipo">
@@ -76,7 +88,7 @@ export default function AddTransaction({onAddTransaction}) {
                     <option value="ahorro">Ahorro</option>
                 </select>
             </div>
-            <button type="submit">Agregar</button>
+            <button /*disabled={monto === "" || tipo === "" || concepto === "" || categoria === ""}*/ type="submit">Agregar</button>
         </form>
     </div>
 )}

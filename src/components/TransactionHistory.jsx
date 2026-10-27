@@ -1,5 +1,6 @@
 import '../styles/MainContent.css'
 import { useState } from 'react'
+import { formatCurrency } from '../App'
 
 export default function TransactionHistory({transacciones, onDeleteTransaction}) {
     const [pagina, setPagina] = useState(1)
@@ -55,7 +56,7 @@ export default function TransactionHistory({transacciones, onDeleteTransaction})
                     { transacciones && filteredTransacciones.length > 0 ? (
                         showPagina().map((tx) => (
                             <li key={tx.id} className="historial-item">
-                                {tx.fecha} - {tx.tipo === 'ingreso' ? '+' : '-'}${tx.monto} - {tx.tipo.toUpperCase()}
+                                {tx.fecha} - {tx.tipo === 'ingreso' ? '+' : '-'} {formatCurrency(tx.monto)} - {tx.tipo.toUpperCase()}
                                 <button value={tx.id} onClick={handleDelete}>
                                     ❌ 
                                 </button>
