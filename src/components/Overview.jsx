@@ -4,8 +4,23 @@ import { formatCurrency } from "../App";
 
 export default function Overview({ transacciones, user }) {
   console.log("Transacciones en Overview:", transacciones);
-  const months=["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-  const [mesSeleccionado, setMesSeleccionado] = useState(months[new Date().getMonth()]);
+  const months = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ];
+  const [mesSeleccionado, setMesSeleccionado] = useState(
+    months[new Date().getMonth()],
+  );
   const agruparPorMes = (tr) => {
     return tr.reduce((acc, tx) => {
       if (!tx.fecha) return acc; // Skip transactions without a date
@@ -28,7 +43,11 @@ export default function Overview({ transacciones, user }) {
       <h1>Mes a mes</h1>
       <div>
         <label htmlFor="mes">Selecciona un mes: </label>
-        <select id="mes" value={mesSeleccionado} onChange={(e) => setMesSeleccionado(e.target.value)}>
+        <select
+          id="mes"
+          value={mesSeleccionado}
+          onChange={(e) => setMesSeleccionado(e.target.value)}
+        >
           {months.map((mes) => (
             <option key={mes} value={mes}>
               {mes}
@@ -37,8 +56,16 @@ export default function Overview({ transacciones, user }) {
         </select>
       </div>
       <div className="stat-card-container">
-        <StatCard title="Ingresos" value={datosMensuales[mesSeleccionado]?.ingresos || 0} icon="➕" />
-        <StatCard title="Egresos" value={datosMensuales[mesSeleccionado]?.egresos || 0} icon="➖" />
+        <StatCard
+          title="Ingresos"
+          value={datosMensuales[mesSeleccionado]?.ingresos || 0}
+          icon="➕"
+        />
+        <StatCard
+          title="Egresos"
+          value={datosMensuales[mesSeleccionado]?.egresos || 0}
+          icon="➖"
+        />
       </div>
     </div>
   );

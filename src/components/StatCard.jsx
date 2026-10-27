@@ -1,8 +1,7 @@
-import '../styles/mainContent.css'
-import { formatCurrency } from '../App'
+import "../styles/mainContent.css";
+import { formatCurrency } from "../App";
 
 export default function StatCard({ title, value, icon }) {
-
   return (
     <div className="stat-card">
       <div className="stat-card-icon">{icon}</div>
