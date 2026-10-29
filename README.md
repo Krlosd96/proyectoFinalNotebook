@@ -2,7 +2,7 @@
 
 **WealthWise Dashboard** es una aplicación web de gestión financiera personal diseñada para llevar un control claro, dinámico e intuitivo de ingresos y egresos en tiempo real.
 
-[🚀 Ver Demo en Vivo]([suspicious link removed]) | [📂 Código en GitHub](https://github.com/Krlosd96/proyectoFinalNotebook.git)
+[🚀 Ver Demo en Vivo](https://proyecto-final-notebook-qxdv.vercel.app) | [📂 Código en GitHub](https://github.com/Krlosd96/proyectoFinalNotebook.git)
 
 ---
 
@@ -40,7 +40,7 @@ Si deseas ejecutar este proyecto en tu máquina local, sigue estos pasos:
 
 1. **Clona el repositorio:**
    ```bash
-   git clone [suspicious link removed]
+   git clone gh repo clone Krlosd96/proyectoFinalNotebook
    ```
 
 ## Autor
