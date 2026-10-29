@@ -2,63 +2,80 @@ import { useState } from "react";
 import "../styles/AddTransaction.css";
 
 export default function AddTransaction({ onAddTransaction }) {
-  const [monto, setMonto] = useState(0);
-  const [tipo, setTipo] = useState("");
-  const [concepto, setConcepto] = useState("");
-  const [categoria, setCategoria] = useState("");
+  const [formData, setFormData] = useState({
+    id: Date.now(),
+    monto: "",
+    tipo: "",
+    concepto: "",
+    categoria: "",
+    fecha: new Date().toISOString().split("T")[0], // Formato YYYY-MM-DD
+  });
+  const [error, setError] = useState(false);
 
-  console.log("Monto ingresado:", monto);
-
-  const validador = (value) => {
-    if (value.trim() === "") {
-      return alert("El monto no puede estar vacío");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "monto" && value >= 0) {
+      setFormData((prev) => ({ ...prev, [name]: parseFloat(value) }));
+    } else if (name !== "monto") {
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (
+      parseFloat(formData.monto) <= 0 ||
+      !formData.monto ||
+      !formData.tipo ||
+      !formData.concepto ||
+      !formData.categoria
+    ) {
+      setError(true);
+      return;
+    }
 
-    if (monto.trim() === "") return alert("El monto no puede estar vacío");
-    if (isNaN(monto) || parseFloat(monto) <= 0)
-      return alert("El monto debe ser un número positivo");
-    if (!tipo) return alert("Debe seleccionar un tipo de transacción");
-    if (!concepto.trim()) return alert("El concepto no puede estar vacío");
-    if (!categoria) return alert("Debe seleccionar una categoría");
-    const nuevaTransaccion = {
-      monto: parseFloat(monto),
-      tipo,
-      concepto,
-      categoria,
-      fecha: new Date().toLocaleDateString(),
+    onAddTransaction(formData);
+    setFormData({
       id: Date.now(),
-    };
-    onAddTransaction(nuevaTransaccion);
-    setMonto(0);
-    setTipo("");
-    setConcepto("");
-    setCategoria("");
+      monto: "",
+      tipo: "",
+      concepto: "",
+      categoria: "",
+      fecha: new Date().toISOString().split("T")[0],
+    });
+    setError(false);
   };
 
   return (
-    <div className="add-transaction-form">
-      <h2>Agregar Transacción</h2>
-      <form onSubmit={handleSubmit}>
+    <div>
+      <form onSubmit={handleSubmit} className="add-transaction-form">
+        <h2>Agregar Transacción</h2>
         <div>
           <label>Monto:</label>
           <input
-            required={monto > 0}
+            placeholder="0.00"
+            className={
+              error && (parseFloat(formData.monto) <= 0 || !formData.monto)
+                ? "input-style input-error"
+                : "input-style"
+            }
             name="monto"
-            min="1"
             type="number"
-            value={monto}
-            onChange={(e) => setMonto(e.target.value)}
+            value={formData.monto}
+            onChange={handleChange}
           />
         </div>
         <div>
           <label>Tipo:</label>
           <select
+            className={
+              error && formData.tipo === ""
+                ? "input-style input-error"
+                : "input-style"
+            }
             required
-            value={tipo}
-            onChange={(e) => setTipo(e.target.value)}
+            value={formData.tipo}
+            onChange={handleChange}
             name="tipo"
           >
             <option value="">Seleccionar tipo</option>
@@ -69,17 +86,28 @@ export default function AddTransaction({ onAddTransaction }) {
         <div>
           <label>Concepto:</label>
           <input
+            placeholder="Ej: Salario, Comida, Transporte"
+            className={
+              error && formData.concepto === ""
+                ? "input-style input-error"
+                : "input-style"
+            }
             type="text"
-            value={concepto}
-            onChange={(e) => setConcepto(e.target.value)}
+            value={formData.concepto}
+            onChange={handleChange}
             name="concepto"
           />
         </div>
         <div>
           <label>Categoría:</label>
           <select
-            value={categoria}
-            onChange={(e) => setCategoria(e.target.value)}
+            className={
+              error && formData.categoria === ""
+                ? "input-style input-error"
+                : "input-style"
+            }
+            value={formData.categoria}
+            onChange={handleChange}
             name="categoria"
           >
             <option value="">Seleccionar categoría</option>
@@ -91,9 +119,7 @@ export default function AddTransaction({ onAddTransaction }) {
             <option value="ahorro">Ahorro</option>
           </select>
         </div>
-        <button
-          /*disabled={monto === "" || tipo === "" || concepto === "" || categoria === ""}*/ type="submit"
-        >
+        <button className="button-add" type="submit">
           Agregar
         </button>
       </form>

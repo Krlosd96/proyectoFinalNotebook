@@ -24,7 +24,9 @@ export default function MainContent({
   const saldo = () => {
     if (!transacciones) return 0;
     return transacciones.reduce((acc, tx) => {
-      return tx.tipo === "ingreso" ? acc + tx.monto : acc - tx.monto;
+      return tx.tipo === "ingreso"
+        ? acc + Number(tx.monto)
+        : acc - Number(tx.monto);
     }, 0);
   };
 

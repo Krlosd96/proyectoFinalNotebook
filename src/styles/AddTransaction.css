@@ -1,6 +1,42 @@
 .add-transaction-form {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  flex-direction: column; /* 👈 Apila los elementos verticalmente */
+  gap: 1.2rem; /* Espacio uniforme entre cada campo */
+  max-width: 400px; /* Opcional: limita el ancho para que no se extienda demasiado */
+  width: 100%;
+}
+.input-error {
+  border: 1px solid #e20202;
+  background-color: #ffc8c8;
+}
+
+.error-message {
+  color: #e53e3e;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.input-style {
+  padding: 8px;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+.button-add {
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: center;
+  box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: all 0.3s ease; /* Hace que el cambio de color sea fluido */
+  gap: 1.5rem;
+}
+
+.button-add:hover {
+  opacity: 0.8;
+  background-color: var(--accent-gold);
+  color: var(--primary-blue);
 }
