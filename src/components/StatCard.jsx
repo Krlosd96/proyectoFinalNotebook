@@ -1,4 +1,4 @@
-import "../styles/mainContent.css";
+import "../styles/MainContent.css";
 import { formatCurrency } from "../App.jsx";
 
 export default function StatCard({ title, value, icon }) {
