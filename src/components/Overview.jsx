@@ -1,6 +1,5 @@
-import StatCard from "./StatCard";
+import StatCard from "./StatCard.jsx";
 import { useState } from "react";
-import { formatCurrency } from "../App";
 
 export default function Overview({ transacciones, user }) {
   console.log("Transacciones en Overview:", transacciones);
@@ -24,7 +23,7 @@ export default function Overview({ transacciones, user }) {
   const agruparPorMes = (tr) => {
     return tr.reduce((acc, tx) => {
       if (!tx.fecha) return acc; // Skip transactions without a date
-      const mes = months[parseInt(tx.fecha.split("/")[0]) - 1]; // Assuming the date format is DD/MM/YYYY
+      const mes = months[parseInt(tx.fecha.split("-")[1]) - 1]; // Assuming the date format is DD-MM-YYYY
       acc[mes] = acc[mes] || { ingresos: 0, egresos: 0 };
       if (tx.tipo === "ingreso") {
         acc[mes].ingresos += tx.monto;

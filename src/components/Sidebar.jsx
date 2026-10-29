@@ -4,18 +4,12 @@ export default function Sidebar({ user, activeTab, setActiveTab, onLogout }) {
   const privateMenu = [
     { id: 1, name: "Overview", icon: "📊" },
     { id: 2, name: "Transactions", icon: "💳" },
-    { id: 3, name: "Budgets", icon: "💰" },
-    { id: 4, name: "Reports", icon: "📈" },
-    { id: 5, name: "Settings", icon: "⚙️" },
   ];
 
   const publicMenu = [
     { id: 1, name: "Home", icon: "🏠" },
     { id: 2, name: "Login", icon: "🔑" },
     { id: 3, name: "Register", icon: "📝" },
-    { id: 4, name: "About", icon: "ℹ️" },
-    { id: 5, name: "Contact", icon: "📞" },
-    { id: 6, name: "Help", icon: "❓" },
   ];
 
   const activeMenu = user === null ? publicMenu : privateMenu;

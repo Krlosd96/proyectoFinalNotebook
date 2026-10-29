@@ -1,6 +1,6 @@
 import "../styles/MainContent.css";
 import { useState } from "react";
-import { formatCurrency } from "../App";
+import { formatCurrency } from "../App.jsx";
 
 export default function TransactionHistory({
   transacciones,

@@ -1,18 +1,49 @@
-# React + Vite
+# 💰 WealthWise Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**WealthWise Dashboard** es una aplicación web de gestión financiera personal diseñada para llevar un control claro, dinámico e intuitivo de ingresos y egresos en tiempo real.
 
-Currently, two official plugins are available:
+[🚀 Ver Demo en Vivo]([suspicious link removed]) | [📂 Código en GitHub](https://github.com/Krlosd96/proyectoFinalNotebook.git)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 📸 Vista Previa
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+![WealthWise Dashboard Preview]![alt text](image.png)
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## ✨ Características Principales
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Resumen Financiero Dinámico:** Cálculo automático en tiempo real del saldo total, ingresos acumulados y gastos totales.
+- **Formateo de Moneda Profesional:** Internacionalización de valores monetarios utilizando la API nativa `Intl.NumberFormat` (formato dinámico con decimales y separadores de miles).
+- **Gestión Completa de Transacciones (CRUD):**
+  - **Creación:** Formulario agrupado en columna con validaciones estrictas para evitar montos negativos o descripciones vacías.
+  - **Eliminación:** Borrado individual de transacciones mediante inmutabilidad de estado (`.filter()`) y actualización inmediata del balance.
+- **Persistencia de Datos:** Integración con `localStorage` del navegador para conservar la información al recargar la página.
+- **Interfaz Amigable (UX):** Mensajes informativos de estado vacío (_Empty State_) y diseño adaptativo estructurado con CSS Flexbox.
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Frontend:** [React]([suspicious link removed]) (Hooks: `useState`, `useEffect`)
+- **Lenguaje:** JavaScript (ES6+)
+- **Estilos:** CSS3 (Layouts en columna y fila con Flexbox)
+- **Herramientas:** Vite / Create React App, Git, GitHub
+- **Despliegue:** Vercel / Netlify
+
+---
+
+## 🚀 Instalación y Configuración Local
+
+Si deseas ejecutar este proyecto en tu máquina local, sigue estos pasos:
+
+1. **Clona el repositorio:**
+   ```bash
+   git clone [suspicious link removed]
+   ```
+
+## Autor
+
+Carlos David Sevilla Duarte
+Github: Krloosd96

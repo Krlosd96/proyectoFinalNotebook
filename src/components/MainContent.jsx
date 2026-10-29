@@ -1,9 +1,9 @@
 import "../styles/MainContent.css";
 import { useState, useEffect } from "react";
-import TransactionHistory from "./TransactionHistory";
-import Overview from "./Overview";
-import AddTransaction from "./AddTransaction";
-import { formatCurrency } from "../App";
+import TransactionHistory from "./TransactionHistory.jsx";
+import Overview from "./Overview.jsx";
+import AddTransaction from "./AddTransaction.jsx";
+import { formatCurrency } from "../App.jsx";
 
 export default function MainContent({
   children,
@@ -41,12 +41,7 @@ export default function MainContent({
             onDeleteTransaction={onDeleteTransaction}
           />
         );
-      case 3:
-        return <div>Budgets</div>;
-      case 4:
-        return <div>Reports</div>;
-      case 5:
-        return <div>Settings</div>;
+
       default:
         return <Overview transacciones={transacciones} user={user} />;
     }

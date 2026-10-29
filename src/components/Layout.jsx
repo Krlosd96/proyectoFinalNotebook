@@ -1,5 +1,5 @@
-import Sidebar from "./Sidebar";
-import MainContent from "./MainContent";
+import Sidebar from "./Sidebar.jsx";
+import MainContent from "./MainContent.jsx";
 import "../styles/Layout.css";
 
 export default function Layout({

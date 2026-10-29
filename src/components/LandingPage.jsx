@@ -1,6 +1,6 @@
-import Login from "./Login";
-import Sidebar from "./Sidebar";
-import Register from "./Register";
+import Login from "./Login.jsx";
+import Sidebar from "./Sidebar.jsx";
+import Register from "./Register.jsx";
 import "../styles/LandingPage.css";
 
 export default function LandingPage({
@@ -19,12 +19,6 @@ export default function LandingPage({
         return <Login onLogin={onLogin} />;
       case 3:
         return <Register onRegister={onRegister} />;
-      case 4:
-        return <div>About</div>;
-      case 5:
-        return <div>Contact</div>;
-      case 6:
-        return <div>Help</div>;
       default:
         return <div>Home</div>;
     }
