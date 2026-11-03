@@ -1,7 +1,7 @@
 import StatCard from "./StatCard.jsx";
 import { useState } from "react";
 
-export default function Overview({ transacciones, user }) {
+export default function Overview({ transacciones }) {
   console.log("Transacciones en Overview:", transacciones);
   const months = [
     "Enero",

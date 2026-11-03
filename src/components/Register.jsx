@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/Register.css";
 
 export default function Register({ onRegister }) {

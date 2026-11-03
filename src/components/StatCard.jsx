@@ -1,5 +1,5 @@
 import "../styles/MainContent.css";
-import { formatCurrency } from "../App.jsx";
+import { formatCurrency } from "../utils/formatCurrency.js";
 
 export default function StatCard({ title, value, icon }) {
   return (

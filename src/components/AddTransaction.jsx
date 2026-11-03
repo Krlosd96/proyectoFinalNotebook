@@ -1,15 +1,15 @@
 import { useState } from "react";
 import "../styles/AddTransaction.css";
 
+const emptyForm = {
+  monto: "",
+  tipo: "",
+  concepto: "",
+  categoria: "",
+};
+
 export default function AddTransaction({ onAddTransaction }) {
-  const [formData, setFormData] = useState({
-    id: Date.now(),
-    monto: "",
-    tipo: "",
-    concepto: "",
-    categoria: "",
-    fecha: new Date().toISOString().split("T")[0], // Formato YYYY-MM-DD
-  });
+  const [formData, setFormData] = useState(emptyForm);
   const [error, setError] = useState(false);
 
   const handleChange = (e) => {
@@ -34,15 +34,12 @@ export default function AddTransaction({ onAddTransaction }) {
       return;
     }
 
-    onAddTransaction(formData);
-    setFormData({
+    onAddTransaction({
+      ...formData,
       id: Date.now(),
-      monto: "",
-      tipo: "",
-      concepto: "",
-      categoria: "",
-      fecha: new Date().toISOString().split("T")[0],
+      fecha: new Date().toISOString().split("T")[0], // Formato YYYY-MM-DD
     });
+    setFormData(emptyForm);
     setError(false);
   };
 

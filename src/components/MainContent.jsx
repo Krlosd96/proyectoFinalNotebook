@@ -1,28 +1,19 @@
 import "../styles/MainContent.css";
-import { useState, useEffect } from "react";
 import TransactionHistory from "./TransactionHistory.jsx";
 import Overview from "./Overview.jsx";
 import AddTransaction from "./AddTransaction.jsx";
-import { formatCurrency } from "../App.jsx";
+import { formatCurrency } from "../utils/formatCurrency.js";
 
 export default function MainContent({
   children,
-  user,
   activeTab,
   onAddTransaction,
   activeUser,
   onDeleteTransaction,
 }) {
-  const [transacciones, setTransacciones] = useState(null);
-
-  useEffect(() => {
-    if (activeUser) {
-      setTransacciones(activeUser.transactions);
-    }
-  }, [activeUser]);
+  const transacciones = activeUser?.transactions ?? [];
 
   const saldo = () => {
-    if (!transacciones) return 0;
     return transacciones.reduce((acc, tx) => {
       return tx.tipo === "ingreso"
         ? acc + Number(tx.monto)
@@ -33,7 +24,7 @@ export default function MainContent({
   const renderActiveTab = () => {
     switch (activeTab) {
       case 1:
-        return <Overview transacciones={transacciones} user={user} />;
+        return <Overview transacciones={transacciones} />;
       case 2:
         return (
           <TransactionHistory
@@ -43,7 +34,7 @@ export default function MainContent({
         );
 
       default:
-        return <Overview transacciones={transacciones} user={user} />;
+        return <Overview transacciones={transacciones} />;
     }
   };
 

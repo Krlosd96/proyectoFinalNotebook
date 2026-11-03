@@ -21,7 +21,6 @@ export default function Layout({
         onLogout={onLogout}
       />
       <MainContent
-        user={user}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onAddTransaction={onAddTransaction}
